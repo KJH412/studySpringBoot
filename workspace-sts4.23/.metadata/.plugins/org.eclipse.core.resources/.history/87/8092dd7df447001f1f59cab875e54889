@@ -1,0 +1,31 @@
+package com.shinhan.firstzone.repository;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.shinhan.firstzone.vo.BoardEntity;
+
+//Repository설계
+//JPA -> interface기반으로 구현class를 만듦
+public interface BoradRepository extends CrudRepository<BoardEntity, Long>{ //<테이블명,pk타입>
+	
+	//1. 기본 CRUD는 제공: findAll(), findById(),save(), count(), deleteById();
+	//2. 규칙에 맞는 함수를 정의
+	//https://docs.spring.io/spring-data/jpa/docs/2.5.1/reference/html/#jpa.query-methods
+	List<BoardEntity> findByWriter(String writer);
+	
+	//like 문 3가지 방법
+	List<BoardEntity> findByTitleStartingWith(String title); //where title 'A%'
+	List<BoardEntity> findByTitleEndingWith(String title); //where title '%A'
+	List<BoardEntity> findByTitleContaining(String title); //where title '%A%'
+	
+	//where bno >= ? and bno <= ?
+	List<BoardEntity> findByBnoBetween(Long bno1, Long bno2);
+	//이런 문장도 됨 Between~And
+	List<BoardEntity> findByIdGreaterThanEqualAndIdLessThanEqual(Long bno1, Long bno2);
+
+	//where content like '%aa%' and (bno >= ? and bno <= ?) order by bno desc
+	List<BoardEntity> findByContentContaining()
+
+}

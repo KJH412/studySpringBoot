@@ -1,0 +1,13 @@
+package com.shinhan.firstzone;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class FirstzoneApplicationTests {
+
+	public static void main(String[] args) {
+		SpringApplication.run(FirstzoneApplicationTests.class, args);
+	}
+
+}

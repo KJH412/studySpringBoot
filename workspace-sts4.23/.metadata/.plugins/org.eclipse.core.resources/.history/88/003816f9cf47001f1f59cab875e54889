@@ -1,0 +1,18 @@
+package com.shinhan.firstzone;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
+@SpringBootTest
+class FirstzoneApplicationTests {
+
+	@Test
+	void contextLoads() {
+		
+	}
+
+}
