@@ -1,0 +1,12 @@
+package com.shinhan.firstzone.vo2;
+
+import jakarta.persistence.Column;
+
+public class GuestBookDTO { //전송용
+	Long gno;
+	String title;
+	String content;
+	String writer;
+	LocalDateTime regDate, modDate;
+	
+}

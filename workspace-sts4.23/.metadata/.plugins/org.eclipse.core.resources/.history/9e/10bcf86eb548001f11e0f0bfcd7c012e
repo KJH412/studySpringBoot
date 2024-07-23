@@ -1,0 +1,5 @@
+package com.shinhan.firstzone.repository;
+
+public class MemberRepository extends JpaRepository<MemberEntity, Long>{
+
+}

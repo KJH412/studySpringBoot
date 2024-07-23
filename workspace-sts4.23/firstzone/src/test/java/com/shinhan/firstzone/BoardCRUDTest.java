@@ -15,18 +15,20 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable; //타입 주의
 import org.springframework.data.domain.Sort;
 
-import com.shinhan.firstzone.repository.BoradRepository;
+import com.shinhan.firstzone.repository.BoardRepository;
 import com.shinhan.firstzone.vo.BoardEntity;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @SpringBootTest  //Junit(단위test)으로 test
-public class BoardCRUDTest {  /* 단위테스트 @Test */
+public class BoardCRUDTest {  
 	
 	@Autowired
-	BoradRepository bRepo;
+	BoardRepository bRepo;  //Spring Bean 등록
 	
+	
+	/* 단위 테스트 메소드들 */
 	@Test
 	void f9() {
 //		bRepo.jpdlTest1("요일", "홀수").forEach(b -> log.info(b));

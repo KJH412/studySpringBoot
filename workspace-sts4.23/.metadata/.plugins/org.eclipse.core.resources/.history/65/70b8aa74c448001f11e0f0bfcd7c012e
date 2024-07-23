@@ -1,0 +1,5 @@
+package com.shinhan.firstzone.repository;
+
+public interface PDSFileRepository {
+
+}

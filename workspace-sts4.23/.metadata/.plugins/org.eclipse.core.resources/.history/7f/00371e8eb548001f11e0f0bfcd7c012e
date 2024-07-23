@@ -1,0 +1,44 @@
+package com.shinhan.firstzone;
+
+import java.util.stream.IntStream;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.shinhan.firstzone.repository.MemberRepository;
+import com.shinhan.firstzone.repository.ProfileRepository;
+import com.shinhan.firstzone.vo2.MemberEntity;
+import com.shinhan.firstzone.vo2.MemberRole;
+
+@SpringBootTest
+public class ManyToOneTest {
+
+	@Autowired
+	MemberRepository mRepo;
+	
+	@Autowired
+	ProfileRepository pRepo;
+	
+	@Test
+	void profileInsert() {
+		
+	}
+	
+	//1.Member insert
+	//@Test
+	void memberInsert() {
+		IntStream.rangeClosed(1, 5).forEach(i -> { //보통 규칙이 없는데 roop 돌리진 않음.
+			MemberEntity member = MemberEntity.builder()
+										.mid(i==1? "king" : "user" + i)
+										.mname("김민영" + i)
+										.mpassword("1234")
+										.mrole(i==1? MemberRole.MANAGER : MemberRole.USER)
+										.build();
+			mRepo.save(member);
+			
+		});
+	}
+	
+	//2.
+}

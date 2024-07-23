@@ -1,0 +1,7 @@
+package com.shinhan.firstzone.repository;
+
+import com.shinhan.firstzone.vo2.ProfileEntity;
+
+public class ProfileRepository extends JpaRepository<ProfileEntity, Long> {
+
+}

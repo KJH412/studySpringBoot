@@ -1,0 +1,57 @@
+package com.shinhan.firstzone.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.shinhan.firstzone.repository.GuestBookRepository;
+import com.shinhan.firstzone.vo2.GuestBookDTO;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor //필수 field를 constructor를 통해 injection
+public class GuestBookServiceImpl implements GuestBookSerivce {
+	
+	@Autowired
+	GuestBookRepository gRepo;
+	
+	/* 이렇게 쓰는 대신 @RequiredArgsConstructor로 작성
+	GuestBookServiceImpl(GuestBookRepository gRepo){
+		this.gRepo = gRepo
+	}
+	*/
+	
+	@Override
+	public void create(GuestBookDTO dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<GuestBookDTO> readAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public GuestBookDTO readById(Long gno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(GuestBookDTO dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Long gno) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+}

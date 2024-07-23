@@ -1,0 +1,10 @@
+package com.shinhan.firstzone.vo2;
+
+import jakarta.persistence.Id;
+
+public class PDSFileEntity { //첨부파일
+	
+	@Id
+	Long fno;
+	String pdsfilename;
+}

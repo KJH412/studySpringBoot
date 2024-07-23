@@ -1,0 +1,9 @@
+package com.shinhan.firstzone.vo2;
+
+public class PDSBoard {
+	Long pid;
+	String pname;
+	String writer;
+	
+	List<PDSFileEntity> files;
+}

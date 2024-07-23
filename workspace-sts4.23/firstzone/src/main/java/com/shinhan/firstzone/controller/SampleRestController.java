@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shinhan.firstzone.repository.BoradRepository;
+import com.shinhan.firstzone.repository.BoardRepository;
 import com.shinhan.firstzone.vo.BoardEntity;
 import com.shinhan.firstzone.vo.CarVO;
 
@@ -26,7 +26,7 @@ import lombok.extern.log4j.Log4j2;
 public class SampleRestController {
 	
 	@Autowired
-	BoradRepository bRepo;
+	BoardRepository bRepo;
 	
 
 	

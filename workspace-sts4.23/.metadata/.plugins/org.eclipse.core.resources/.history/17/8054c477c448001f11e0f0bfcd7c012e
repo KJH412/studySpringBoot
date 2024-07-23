@@ -1,0 +1,7 @@
+package com.shinhan.firstzone.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PDSFileRepository extends JpaRepository<PDSFileEntity, Long>{
+
+}

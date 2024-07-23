@@ -1,0 +1,26 @@
+package com.shinhan.firstzone.vo2;
+
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import jakarta.persistence.Column;
+
+public class GuestBookEntity {
+	 
+	Long gno;
+	String title;
+	String content;
+	String writer;
+	
+	
+	/* BaseEntity로 분리
+	@CreationTimestamp  //hibernate 어노테이션
+	@Column(name = "regdate", updatable = false) //updatable=false :수정 불가
+	LocalDateTime regDate;
+	@LastModifiedDate
+	@Column(name = "moddate")
+	LocalDateTime modDate;
+	*/
+}

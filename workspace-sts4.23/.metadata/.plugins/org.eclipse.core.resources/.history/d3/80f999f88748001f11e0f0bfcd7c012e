@@ -1,0 +1,17 @@
+package com.shinhan.firstzone.vo2;
+
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+public class GuestBookEntity {
+	 
+	Long gno;
+	String title;
+	String content;
+	String writer;
+	
+	@CreationTimestamp  //hibernate 어노테이션
+	LocalDateTime regDate;
+	LocalDateTime modDate;
+}

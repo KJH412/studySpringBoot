@@ -1,0 +1,11 @@
+package com.shinhan.firstzone;
+
+public interface GuestBookSerivce {
+	
+	//CRUD
+	//1.Create
+	void create();
+	//2.Read
+	//3.Update
+	//4.Delete
+}

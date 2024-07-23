@@ -1,0 +1,5 @@
+package com.shinhan.firstzone.service;
+
+public class GuestBookServiceImpl {
+
+}

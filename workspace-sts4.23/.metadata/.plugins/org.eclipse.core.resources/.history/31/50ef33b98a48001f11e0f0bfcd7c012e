@@ -1,0 +1,9 @@
+package com.shinhan.firstzone.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+
+//CrudRepository : 기본 CRUD 생성
+public interface GuestBookRepository extends CrudRepository<GuestBookEntity, Long>{
+	
+}

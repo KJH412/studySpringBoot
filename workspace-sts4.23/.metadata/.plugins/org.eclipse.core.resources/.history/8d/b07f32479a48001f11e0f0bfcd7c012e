@@ -1,0 +1,22 @@
+package com.shinhan.firstzone.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.shinhan.firstzone.service.GuestBookSerivce;
+import com.shinhan.firstzone.vo2.GuestBookDTO;
+
+import lombok.RequiredArgsConstructor;
+
+@RestController("/guest")
+@RequiredArgsConstructor
+public class GuestBookRestController {
+	final GuestBookSerivce gService;
+	
+	@GetMapping("/list")
+	List<GuestBookDTO> list(){
+		return gService.readAll();
+	}
+}

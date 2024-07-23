@@ -1,0 +1,5 @@
+package com.shinhan.firstzone;
+
+public interface GuestBookSerivce {
+
+}
