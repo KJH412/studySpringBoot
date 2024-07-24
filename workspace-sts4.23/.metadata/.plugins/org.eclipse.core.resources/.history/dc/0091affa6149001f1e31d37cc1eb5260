@@ -1,0 +1,5 @@
+package com.shinhan.firstzone.repository3;
+
+public interface FreeBoardRepository {
+
+}

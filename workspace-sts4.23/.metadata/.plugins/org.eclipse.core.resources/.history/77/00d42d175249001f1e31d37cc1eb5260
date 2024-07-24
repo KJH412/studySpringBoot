@@ -1,0 +1,18 @@
+package com.shinhan.firstzone;
+
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.shinhan.firstzone.repository.MemberRepository;
+import com.shinhan.firstzone.repository.ProfileRepository;
+
+@SpringBootTest
+public class Review {
+
+	@Autowired
+	MemberRepository mRepo;
+	
+	@Autowired
+	ProfileRepository pRepo;
+}

@@ -1,0 +1,19 @@
+package com.shinhan.firstzone;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.shinhan.firstzone.repository.EnumTypeVORepository;
+import com.shinhan.firstzone.vo3.EnumTypeVO;
+
+@SpringBootTest
+public class EnumTypeTest {
+	
+	@Autowired
+	EnumTypeVORepository repo;
+	
+	@Test
+	void f1() {
+		EnumTypeVO vo = EnumTypeVO.builder().build();
+	}
+}

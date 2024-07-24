@@ -1,0 +1,7 @@
+package com.shinhan.firstzone.vo3;
+
+import java.io.Serializable;
+
+public class MultiKeyA implements Serializable{
+	
+}

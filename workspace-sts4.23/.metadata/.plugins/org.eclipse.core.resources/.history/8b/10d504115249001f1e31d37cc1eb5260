@@ -1,0 +1,9 @@
+package com.shinhan.firstzone;
+
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+public class Review {
+
+
+}

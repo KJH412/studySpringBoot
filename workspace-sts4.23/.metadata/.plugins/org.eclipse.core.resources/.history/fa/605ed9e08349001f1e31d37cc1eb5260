@@ -1,0 +1,18 @@
+package com.shinhan.firstzone.vo3;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Table(name = "")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class MultiKeyA implements Serializable{
+	
+}

@@ -1,0 +1,24 @@
+package com.shinhan.firstzone.vo3;
+
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Table(name = "t_child2")
+@Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class MultiKeyBClass {
+	@EmbeddedId
+	MultiKeyB id;
+	String productName;
+	int price;
+}

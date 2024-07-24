@@ -1,0 +1,18 @@
+package com.shinhan.firstzone.repository3;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.shinhan.firstzone.vo3.FreeBoardEntity;
+
+public interface FreeBoardRepository extends JpaRepository<FreeBoardEntity, Long>{
+	
+	
+	@Query("select b.pname, count(f ) " 
+			+ " from #{#entityName} b left outer join b.files f  where b.pid>0 "
+			+ " group by b.pname order by b.pname ")
+	public List<Object[]> getBoardReplyCount2();
+
+}

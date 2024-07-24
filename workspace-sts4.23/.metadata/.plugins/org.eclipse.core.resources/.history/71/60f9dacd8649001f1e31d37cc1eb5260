@@ -1,0 +1,30 @@
+package com.shinhan.firstzone;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.shinhan.firstzone.repository3.MultiKeyARepository;
+import com.shinhan.firstzone.repository3.MultiKeyBRepository;
+import com.shinhan.firstzone.vo3.MultiKeyAClass;
+
+@SpringBootTest
+public class MultiKeyTest {
+	
+	@Autowired
+	MultiKeyARepository aRepo;
+	
+	@Autowired
+	MultiKeyBRepository bRepo;
+	
+	@Test
+	void insertA() {
+		MultiKeyAClass a = MultiKeyAClass.builder()
+				.id1(20)
+				.id2(30)
+				.productName("커피")
+				.price(100)
+				.build();
+		aRepo.save(a);
+	}
+}
