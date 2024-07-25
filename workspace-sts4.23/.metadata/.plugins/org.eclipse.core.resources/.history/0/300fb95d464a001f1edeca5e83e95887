@@ -1,0 +1,21 @@
+package com.shinhan.firstzone.service2;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.shinhan.firstzone.repository4.WebBoardRepository;
+import com.shinhan.firstzone.vo4.WebBoardDTO;
+import com.shinhan.firstzone.vo4.WebBoardEntity;
+
+@Service
+public class WebBoardServiceImpl implements WebBoardService {
+
+	@Autowired
+	WebBoardRepository boardRepo;
+	
+	@Override
+	public Long register(WebBoardDTO dto) {
+		WebBoardEntity newEntity = boardRepo.save(dtoToEntity(dto));
+		return newEntity.getBno();
+	}
+}

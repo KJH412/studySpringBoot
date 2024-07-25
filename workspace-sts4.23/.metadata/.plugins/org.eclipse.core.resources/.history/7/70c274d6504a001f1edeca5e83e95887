@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>boardlist</h1>
+	
+	<!-- Data display -->
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">bno</th>
+				<th scope="col">title</th>
+				<th scope="col">content</th>
+				<th scope="col">writerEmail</th>
+				<th scope="col">writerName</th>
+				<th scope="col">regdate</th>
+				<th scope="col">moddate</th>
+				<th scope="col">replyCount</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="dto:${result.dtoList}">
+				<th scope="row">
+				<a th:href="@{/board/read(bno=${dto.bno},page=${result.page},size=${result.size},type=${pageRequestDTO.type},keyword=${pageRequestDTO.keyword})}">[[${dto.bno}]]</a>
+				</th>
+				<td>[[${dto.title}]]</td>
+				<td>[[${dto.content}]]</td>
+				<td>[[${dto.writerEmail}]]</td>
+				<td>[[${dto.writerName}]]</td>
+				<td>[[${#temporals.format(dto.regDate,'yyyy/MM/dd')}]]</td>
+				<td>[[${#temporals.format(dto.modDate,'yyyy/MM/dd')}]]</td>
+				<td>[[${dto.replyCount}]]</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>FreeBoard List</h1>
+	<h2>세션읽기 : [[${session.loginUser.mname}]]</h2>
+	<h2>파라미터읽기(?keyword=수요일): [[${param.keyword}]]</h2>
+	<!-- 지역변수 사용시 with -->
+	<table border = "1", th:with="myuser='user2'">
+		<tr>
+			<th>순서</th>
+			<th>bno</th>
+			<th>title</th>
+			<th>content</th>
+			<th>writer</th>
+			<th>writer2</th>
+			<th>작성일</th>
+			<th>수정일</th>
+		</tr>
+		<tr th:each="board, bStatus:${blist}">
+			<td>[[${bStatus.count}]]</td>
+			<td th:text="${board.bno}"></td>
+			<td>[[${board.title}]]</td>
+			<td>[[${board.content}]]</td>
+			<td>[[${board.writer}]]</td>
+			<td th:text="${board.writer==myuser? '2번':'기타'}"></td>
+			<td>[[${board.regdate}]]</td>
+			<td>[[${board.updatedate}]]</td>
+		</tr>
+	</table>
+	<script th:inline="javascript">
+		//(주의)주석 공백 없이!
+		var boardlist= /*[[${blist}]]*/[];
+		console.log(boardlist);
+	</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+package com.shinhan.firstzone.repository4;
+
+public interface FreeWenReplyRepository {
+
+}

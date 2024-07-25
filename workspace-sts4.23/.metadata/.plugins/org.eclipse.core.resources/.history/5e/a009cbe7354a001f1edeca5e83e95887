@@ -1,0 +1,7 @@
+package com.shinhan.firstzone.repository4;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface FreeWebRepository extends CrudRepository<WebBoardEntity, WebBoardEntity>{
+
+}

@@ -24,5 +24,5 @@ public class MemberEntity {
 	String mname;
 	@Enumerated(EnumType.STRING) //기본은 순서 ordinal이 입력됨. Enum 문자타입
 	MemberRole mrole; 
-	//USER, MANAGER, ADMIN 권한이 3개 뿐이라 Enum으로 만듦
+	//USER, MANAGER, ADMIN 권한이 3개 뿐이라 Enum으로 만듦(MemberRole.java)
 }

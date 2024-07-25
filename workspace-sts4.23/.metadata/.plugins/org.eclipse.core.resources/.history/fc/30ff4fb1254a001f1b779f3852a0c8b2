@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>FreeBoard List</h1>
+	<table border = "1">
+		<tr>
+			<th>bno</th>
+			<th>title</th>
+			<th>content</th>
+			<th>writer</th>
+			<th>작성일</th>
+			<th>수정일</th>
+		</tr>
+		<tr th:each="board:${blist}">
+			<td th:text="${board.bno}"></td>
+			<td>[[${board.title}]]]</td>
+			<td>[[${board.content}]]]</td>
+			<td>[[${board.writer]]]</td>
+			<td>[[${board.regdate}]]]</td>
+			<td>[[${board.updatedate]]]</td>
+		</tr>
+	</table>
+	<script th:inline="text/javascript">
+		var boardlist= ${blist}[];
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+package com.shinhan.firstzone.vo3;
+
+import java.sql.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.shinhan.firstzone.vo2.MemberEntity;
+
+public class WebBoardEntity {
+	
+	private Long bno;
+	private String title;
+	private MemberEntity writer;
+	private String content;
+	@CreationTimestamp //insert시 자동 생성
+	private Timestamp regdate;
+	@UpdateTimestamp //insert , update시 자동 생성
+	private Timestamp updatedate;
+}

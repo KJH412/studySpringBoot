@@ -1,0 +1,9 @@
+package com.shinhan.firstzone.repository4;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.shinhan.firstzone.vo4.WebReplyEntity;
+
+public interface FreeWenReplyRepository extends CrudRepository<WebReplyEntity, Long> {
+
+}
