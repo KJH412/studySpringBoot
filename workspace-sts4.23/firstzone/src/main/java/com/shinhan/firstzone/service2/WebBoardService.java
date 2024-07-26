@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
+import com.shinhan.firstzone.paging.PageRequestDTO;
+import com.shinhan.firstzone.paging.PageResultDTO;
 import com.shinhan.firstzone.vo2.MemberEntity;
 import com.shinhan.firstzone.vo4.QWebBoardEntity;
 import com.shinhan.firstzone.vo4.WebBoardDTO;
@@ -12,12 +14,21 @@ import com.shinhan.firstzone.vo4.WebBoardEntity;
 //브라우저-insert->|    JPA|-->DB
 //브라우저<-(보드정보,멤버정보)조회-|    웹보드엔티티<-JAP|<--DB
 // =>db에서 가져온 데이터와 브라우저에 보여주는 데이터 형태가 다르다. DTO필요
-public interface WebBoardService { //설계
+public interface WebBoardService { 
+	
+	//Service interface : 설계 (동적SQL 만들 수 있음) 
+	//-> WebBoardServiceImpl.java에서 implements를 받아서 비즈니스 로직 구현
+	//꼭 필요한 로직을 서비스에 정의해둔다. 
+	
 	//CRUD작업제공
 	//1.입력
 	Long register(WebBoardDTO dto);
+	
 	//2.조회
 	List<WebBoardDTO> getList();
+	//페이징 처리
+	PageResultDTO<WebBoardDTO, WebBoardEntity> getList(PageRequestDTO pageRequestDTO);
+	
 	WebBoardDTO selectById(Long bno);
 	//3.수정
 	void modify(WebBoardDTO dto);
@@ -26,7 +37,7 @@ public interface WebBoardService { //설계
 	
 	//동적 SQL만들기
 	//t->title/ c->content/ w->writer/ tc->title,content/ tcw->title,content,writer
-	public default Predicate makePredicate(String type, String keyword) {
+	public default Predicate makePredicate(String type, String keyword) { //키워드로 조회
 		BooleanBuilder builder = new BooleanBuilder();
 		QWebBoardEntity board = QWebBoardEntity.webBoardEntity;
 		builder.and(board.bno.gt(0));
@@ -43,6 +54,7 @@ public interface WebBoardService { //설계
 	}
 	
 	//DTO => Entity (DB에 반영하기 위함)
+	//insert, update할 때 사용
 	 default WebBoardEntity dtoToEntity(WebBoardDTO dto) {
 		 MemberEntity member = MemberEntity.builder().mid(dto.getMid()).build();
 		 //date는 타임스탬프로 찍힐거라 안가져와도 됨.
@@ -58,6 +70,7 @@ public interface WebBoardService { //설계
 	 
 	//interface를 구현하고 싶을 때? default 사용!
 	//Entity => DTO  (Data전송을 위함, controller, service, view에서 작업)
+	 //조회 
 	default WebBoardDTO entityToDTO(WebBoardEntity entity){
 		WebBoardDTO dto = WebBoardDTO.builder()
 				.bno(entity.getBno())

@@ -1,0 +1,15 @@
+package com.shinhan.firstzone.service2;
+
+import com.shinhan.firstzone.vo4.WebReplyDTO;
+
+public interface WebReplyService {
+	
+	
+	//CRUD
+	
+	//Create
+	Long register(WebReplyDTO dto);
+	
+	//Read
+	List<WebReplyDTO> getList();
+}

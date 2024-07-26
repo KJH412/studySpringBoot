@@ -1,0 +1,15 @@
+package com.shinhan.firstzone.repository4;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+
+import com.shinhan.firstzone.vo4.WebBoardEntity;
+
+//interface설계
+//1.JpaRepository , QuerydslPredicateExecutor 상속 : 기본제공함수들을 사용 가능
+//2.규칙이 있는 함수 정의: findy ~~
+//3.JPQL : select -> @Query  , DML -> @Modifying @Query사용
+public interface WebBoardRepository extends JpaRepository<WebBoardEntity, Long>,
+						QuerydslPredicateExecutor<WebBoardEntity>{
+	
+}

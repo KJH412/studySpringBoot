@@ -1,0 +1,10 @@
+package com.shinhan.firstzone.service2;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class WebReplyServiceImpl implements WebReplyService {
+	@Autowired
+	WebRep
+}

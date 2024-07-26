@@ -1,0 +1,53 @@
+package com.shinhan.firstzone.vo4;
+
+import java.sql.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.shinhan.firstzone.vo3.FreeBoardEntity;
+import com.shinhan.firstzone.vo3.FreeReplyEntity;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter@Setter
+@ToString (exclude = "board") //board를 원할 때만 get해서 사용하기 위해서 연관관계를 끊음
+@Entity 
+@Table(name = "t_webreply")
+public class WebReplyEntity {
+	@Id//PK
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //IDENTITY:시퀀스 자동생성X
+	private Long rno;
+	private String reply;
+	private String replyer;
+	
+	@CreationTimestamp //insert시 자동 생성
+	private Timestamp regdate;
+	@UpdateTimestamp //insert , update시 자동 생성
+	private Timestamp updatedate;
+	
+	//하나의 board에 댓글이 여러개 있음. (자식)
+	@ManyToOne (fetch = FetchType.LAZY) //테이블DB칼럼=>board_bno
+	private WebBoardEntity board;
+	//삭제 기능할 때 LAZY를 줘야 삭제가 된다.
+	//왜? 부모가 삭제됐을 때는 자식도 같이 삭제되니까 부모인 WebBoardEntity는 EAGER여야 하고
+	//자식인 WebReplyEntity는 LAZY로 패치해서 자식만 삭제되도록 한다.(자식 자기 자신)
+	//부모 하나(게시글board)에 자식(댓글)이 여러개인데 댓글하나 삭제한다고 게시글이 지원지면 안됨.
+}

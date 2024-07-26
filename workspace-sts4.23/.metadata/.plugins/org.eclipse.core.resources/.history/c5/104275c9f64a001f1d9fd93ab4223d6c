@@ -1,0 +1,47 @@
+package com.shinhan.firstzone.service2;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.shinhan.firstzone.repository4.WepReplyRepository;
+import com.shinhan.firstzone.vo4.WebBoardEntity;
+import com.shinhan.firstzone.vo4.WebReplyDTO;
+import com.shinhan.firstzone.vo4.WebReplyEntity;
+
+@Service
+public class WebReplyServiceImpl implements WebReplyService {
+
+	@Autowired
+	WepReplyRepository replyRepo;
+	
+	@Override
+	public Long register(WebReplyDTO dto) {
+		WebReplyEntity newReply = replyRepo.save(dtoToEntity(dto));
+		
+		return newReply.getRno();
+	}
+
+	@Override
+	public List<WebReplyDTO> getList(Long bno) {
+		WebBoardEntity board = WebBoardEntity.builder().bno(bno).build();
+		List<WebReplyEntity> entityList = replyRepo.findByBoard(board);
+		return entityList.stream().map(en -> entityToDTO(en)).collect(Collectors.toList());
+		
+	}
+
+	@Override
+	public void modify(WebReplyDTO dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Long rno) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

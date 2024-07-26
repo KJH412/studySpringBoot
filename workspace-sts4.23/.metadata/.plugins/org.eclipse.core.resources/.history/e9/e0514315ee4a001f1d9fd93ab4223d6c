@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block th:replace="~{/layout/basicLayout :: setContent(~{this::content3} )}">
+<th:block th:fragment="content3">
+	<h1>boardlist</h1>
+	
+	<!-- Data display -->
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">bno</th>
+				<th scope="col">title</th>
+				<th scope="col">content</th>
+				<th scope="col">아이디</th>
+				<th scope="col">이름</th>
+				<th scope="col">작성일</th>
+				<th scope="col">수정일</th>
+				<th scope="col">리뷰건수</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="dto:${blist}">
+				<th scope="row">
+					<a th:href="@{detail(bno=${dto.bno})}">[[${dto.bno}]]</a>
+				</th>
+				<td>[[${dto.title}]]</td>
+				<td>[[${dto.content}]]</td>
+				<td>[[${dto.mid}]]</td>
+				<td>[[${dto.mname}]]</td>
+				<td>[[${#dates.format(dto.regdate,'yyyy/MM/dd')}]]</td>
+				<td>[[${#dates.format(dto.updatedate,'yyyy/MM/dd')}]]</td>
+				<td>[[${dto.replyCount}]]</td>
+			</tr>
+		</tbody>
+	</table>
+	<script th:inline="javascript">
+		var msg = /*[[${msg}]]*/"";
+		if(msg!==null && msg !== "") alert(msg);
+	</script>
+</th:block>
+</th:block>
+</body>
+</html>

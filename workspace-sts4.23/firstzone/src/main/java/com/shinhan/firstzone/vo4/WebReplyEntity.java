@@ -8,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import com.shinhan.firstzone.vo3.FreeBoardEntity;
 import com.shinhan.firstzone.vo3.FreeReplyEntity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -43,6 +44,10 @@ public class WebReplyEntity {
 	private Timestamp updatedate;
 	
 	//하나의 board에 댓글이 여러개 있음. (자식)
-	@ManyToOne (fetch = FetchType.EAGER) //테이블칼럼=>board_bno
+	@ManyToOne (fetch = FetchType.LAZY) //테이블DB칼럼=>board_bno
 	private WebBoardEntity board;
+	//★★★삭제 기능할 때 연관 관계(참조)가 있는 자식엔티티필드에 LAZY를 줘야 삭제가 된다.
+	//왜? 부모가 삭제됐을 때는 자식도 같이 삭제되니까 부모인 WebBoardEntity는 EAGER여야 하고
+	//자식인 WebReplyEntity는 LAZY로 패치해서 자식만 삭제되도록 한다.(자식인 자신만!)
+	//부모 하나(게시글board)에 자식(댓글)이 여러개인데 댓글하나 삭제한다고 게시글이 지원지면 안됨.
 }

@@ -10,7 +10,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="rno"/>
 		<list key="findhistory">
+			<item value="rno"/>
+			<item value="cart-title"/>
 		</list>
 		<list key="replacehistory">
 		</list>

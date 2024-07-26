@@ -1,12 +1,16 @@
 package com.shinhan.firstzone.service2;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.shinhan.firstzone.paging.PageRequestDTO;
+import com.shinhan.firstzone.paging.PageResultDTO;
 import com.shinhan.firstzone.repository4.WebBoardRepository;
 import com.shinhan.firstzone.vo2.MemberEntity;
 import com.shinhan.firstzone.vo4.WebBoardDTO;
@@ -31,6 +35,20 @@ public class WebBoardServiceImpl implements WebBoardService {
 		List<WebBoardDTO> blist = boardRepo.findAll().stream().map(en -> entityToDTO(en)).collect(Collectors.toList());
 		return blist;
 	}
+	
+	//페이징 처리
+	public PageResultDTO<WebBoardDTO, WebBoardEntity> getList(PageRequestDTO pageRequestDTO){
+		//querydsl제공 메서드 => findAll(Predicate,Pageable)
+		//Predicate: 데이터의 값이 조건을 만족하는지 검사한다는 의미
+		 Page<WebBoardEntity> result = boardRepo.findAll(
+				 				//타입과 키워드로 검사
+				 				makePredicate(pageRequestDTO.getType(), pageRequestDTO.getKeyword()), //Predicate
+				 				pageRequestDTO.getPageable(Sort.by("bno").descending())); //Pageable sort 
+		Function<WebBoardEntity, WebBoardDTO> fn = en -> entityToDTO(en); 
+		PageResultDTO<WebBoardDTO, WebBoardEntity> result2 = new PageResultDTO<>(result, fn);
+//		<A,B> A가 들어오면 B로 바꾼다.
+		return result2;
+	};
 	
 
 	@Override

@@ -1,0 +1,8 @@
+package com.shinhan.firstzone.service2;
+
+public class WebReplyService {
+	
+	
+	//CRUD
+	Long register(WebReplyDTO dto);
+}
