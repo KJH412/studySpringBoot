@@ -10,8 +10,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="rno"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="DTO"/>
 			<item value="rno"/>
 			<item value="cart-title"/>
 		</list>

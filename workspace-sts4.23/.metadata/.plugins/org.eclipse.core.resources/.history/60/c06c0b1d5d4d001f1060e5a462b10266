@@ -1,0 +1,57 @@
+package com.shinhan.firstzone.security;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+@Configuration //설정파일임을 의미 ..App시작 시 해석된다.
+@EnableWebSecurity  //web에서 시큐리티 담당
+public class SpringSecurityConfig {
+	
+	//상수로 접근권한에 따른 요청주소들을 저장
+	private static final String[] WHITE_LIST = {"/security/all"};
+	private static final String[] USER_LIST = {"/security/user", "/webboard/**","/replies/**"};
+	private static final String[] ADMIN_LIST = {"/security/admin"};
+	private static final String[] MANAGER_LIST = {"/security/manager"};
+	
+	@Bean
+	PasswordEncoder passEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public SecurityFilterChain filterChain2(HttpSecurity http) throws Exception {
+		http.authorizeHttpRequests(auth ->{
+			auth.requestMatchers(WHITE_LIST).permitAll();  //permitAll: WHITE_LIST에 포함된 URL은 인증 없이 접근할 수 있도록 허용
+			auth.requestMatchers(USER_LIST).hasRole("USER");  
+			auth.requestMatchers(USER_LIST).hasRole("USER");  
+			auth.requestMatchers(ADMIN_LIST).hasRole("ADMIN");  
+			auth.requestMatchers(MANAGER_LIST).hasRole("MANAGER");  
+			auth.anyRequest().authenticated();  //authenticated : 그 외의 모든 요청은 인증을 요구
+			
+		});
+		
+		//formLogin() 정의
+		http.formLogin(login -> 
+				login.loginPage("/auth/login")
+				.usernameParameter("mid")
+				.defaultSuccessUrl("/auth/loginSuccess")
+				.permitAll()
+				);
+		http.logout(out -> out.logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout"))
+								.logoutSuccessUrl("/auth/login")
+								.invalidateHttpSession(true));
+		http.exceptionHandling(handling -> handling.accessDeniedPage("/auth/accessDenined"));
+		return http.build();
+	}
+}

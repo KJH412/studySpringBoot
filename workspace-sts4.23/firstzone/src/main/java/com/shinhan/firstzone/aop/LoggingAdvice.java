@@ -17,11 +17,11 @@ import org.springframework.stereotype.Component;
 //Advise : 조인 포인트에 삽입되어 동작할 수 있는 공통 관심 사항의 코드
 //(aspect 실제 구현체) 
 //*동작시점 : 조인포인트 실행 전, 후로 before, after, after returning, after throwing, around로 구분 
-
+//@Order() : Order의 숫자가 큰 값이 먼저 나온다.
 
 @Component  //<context:component-scan base-package="com.shinhan"/>
 @Aspect   //<aop:aspectj-autoproxy/>
-@Order(2)
+@Order(2) //동일한 target클래스에 결합되는 Aspect의 우선순위는 Ordered 인터페이스를 구현하거나 @Order 어노테이션으로 지정한다.
 public class LoggingAdvice  {
  
 	

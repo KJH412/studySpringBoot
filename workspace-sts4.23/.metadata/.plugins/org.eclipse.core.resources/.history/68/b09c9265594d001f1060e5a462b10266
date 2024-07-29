@@ -1,0 +1,18 @@
+package com.shinhan.firstzone.security;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/auth")
+public class SecurityAuthController {
+	
+	@GetMapping("/login")
+	public void f1() {}
+	
+	@GetMapping("/loginSuccess")
+	public void f2() {}
+	
+}
